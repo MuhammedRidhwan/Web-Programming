@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>Registration Form</title>
+</head>
+<body align="center" bgcolor="lightpink">
+<h2>Registration Form</h2>
+<form>
+<h3>Type the details</h3>
+<p><label="username">Username:</label><br>
+<input type="text" id="username" name="username" required></p>
+<p><label for="email">Email Address:</label><br>
+<input type="email" id="email" name="email" required></p>
+<p><label="password">Password:</label><br>
+<input type="password" id="password" name="password" minlength="8" required></p>
+<br>
+<h3>Details</h3>
+<p><label="fullname">Full Name:</label><br>
+<input type="text" id="fullname" name="fullname" required><br>
+<label>Gender:</label><br>
+<input type="radio" id="male" name="gender" value="male">
+<label="male">Male</label>
+<input type="radio" id="female" name="gender" value="female">
+<label="female">Female</label>
+<input type="radio" id="other" name="gender" value="other">
+<label="other">Other</label><br>
+<label="country">Place:</label><br>
+<select id="country" name="country" required>
+<option value="IN">India</option>
+<option value="US">United States</option>
+<option value="UK">United Kingdom</option>
+<option value="AU">Australia</option>
+</select>
+<br>
+<h3>Qualifications</h3>
+<label value="SSLC">SSLC</label>
+<input type="checkbox" id="qualification" name="qualification"><br>
+<label value="+2">PLUS TWO</label>
+<input type="checkbox" id="qualification" name="qualification"><br>
+<label value="degree">DEGREE</label>
+<input type="checkbox" id="qualification" name="qualification"><br>
+<label value="pg">PG</label>
+<input type="checkbox" id="qualification" name="qualification"><br>
+</p>
+<button type="submit">Register Account</button>
+<button type="reset">Clear Form</button>
+</form>
+</body>
+</html>
