@@ -1,0 +1,115 @@
+<html>
+<head>
+<title>JavaScript String and Math Objects</title>
+
+
+<style>
+body{
+font-family: "Times New Roman", sans-serif;
+background-color: lightblue;
+}
+
+h1{
+color: black;
+}
+
+h2{
+color: black;
+}
+input{
+padding: 10px;
+width: 250px;
+border-radius: 5px;
+margin: 10px;
+}
+button{
+background-color: orange;
+color: black;
+padding: 10px 20px;
+border-radius: 5px;
+}
+</style>
+
+
+</head>
+<body><center>
+<h1><i>STRING AND MATH OBJECT FUNCTIONS</i></h1></center>
+
+<hr>
+
+<h2>1.STRING OBJECT FUNCTIONS</h2>
+
+ENTER A WORD:
+<input type="text" id="str">
+<br>
+ENTER TEXT TO REPLACE:
+<input type="text" id="oldText">
+<br>
+ENTER REPLACEMENT TEXT:
+<input type="text" id="newText">
+<br>
+<br>
+
+<button onclick="stringFunctions()">SUBMIT</button>
+<p id="stringResult"></p>
+
+<script>
+function stringFunctions()
+{
+var str=document.getElementById("str").value;
+var result="<b>ORGINAL STRING=</b>"+str+"<br><br>";
+
+result +="1.LENGTH:"+str.length+"<br>";
+result +="2.UPPERCASE:"+str.toUpperCase()+"<br>";
+result +="3.LOWERCASE:"+str.toLowerCase()+"<br>";
+result +="4.CHARACTER AT POSITION 1:"+ str.charAt(1)+"<br>";
+result +="5.INDEX OF JAVA:"+str.indexOf("Java")+"<br>";
+result +="6.SLICE[0,5]:"+str.slice(0,5)+"<br>";
+
+var oldText=document.getElementById("oldText").value;
+var newText=document.getElementById("newText").value;
+
+result +="7.REPLACE:"+str.replace(oldText,newText)+"<br>";
+
+result += "8.CONCATENATION:"+str.concat(str)+"<br>";
+result += "9.TRIM:"+(" " + str + " ").trim()+"<br>";
+
+document.getElementById("stringResult").innerHTML=result;
+}
+</script>
+
+
+<hr>
+ 
+ 
+<h2>2.MATH OBJECT FUNCTIONS</h2>
+ENTER A NUMBER:
+<input type="number" id="num" step="any">
+<br>
+<br>
+<button onclick="mathFunctions()">SUBMIT</button>
+<p id="mathResult"></p>
+
+<script>
+function mathFunctions()
+{
+var num=Number(document.getElementById("num").value);
+var result="<b>ORGINAL NUMBER=</b>"+num+"<br><br>";
+
+result +="1.ABSOLUTE VALUE Value:"+Math.abs(num)+"<br>";
+result +="2.ROUND:"+Math.round(num)+"<br>";
+result +="3.CEIL:"+Math.ceil(num)+"<br>";
+result +="4.FLOOR:"+Math.floor(num)+"<br>";
+result +="5.SQAURE ROOT:"+Math.sqrt(num)+"<br>";
+result += "6.POWER to 3:"+Math.pow(num, 3)+"<br>";
+result += "7.MAXIMUN (10,20,30):"+Math.max(10,20,30)+"<br>";
+result += "8.MINIMUM (10,20,30):"+Math.min(10,20,30)+"<br>";
+result += "9.RANDOM NUMBER:"+Math.random()+"<br>";
+result += "10.PI VALUE:"+Math.PI+"<br>";
+
+document.getElementById("mathResult").innerHTML = result;
+}
+</script>
+
+</body>
+</html>
