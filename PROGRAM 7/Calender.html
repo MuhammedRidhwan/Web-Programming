@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>calendar</title>
+<style>
+body{
+background-color:white;
+}
+table{
+border-collapse:collapse;
+margin-bottom:10px;
+width:100%;
+}
+th,td{
+padding:5px;
+text-align:center;
+}
+#calendar{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+th[colspan="7"]{
+background-color:lightblue;
+color:darkblue;
+}
+</style>
+</head>
+<body>
+<center>
+<h2>GENERATE CALANDAR FOR A YEAR</h2>
+<p>enter the year:</p>
+<input type="number" id="year input" placeholder="enter year">
+<button onclick="generateCalendar()">generate calendar</button>
+<div id="calendar"></div>
+</center>
+<script>
+function generateCalendar(){
+const year = document.getElementById("year input").value;
+if(!year || isNaN(year) || year<1000 || year>9999){
+alert("please enter a valid year between 1000 & 9999");
+return;
+}
+const calendarDiv = document.getElementById("calendar");
+calendarDiv.innerHTML="";
+
+const months=[
+"January","February","March","April","May","June",
+"July","August","September","October","November","December"];
+
+for(let month=0;month<12;month++){
+let Month='<table border="1"><tr><th colspan="7"><strong>'+
+months[month]+' '+year+'</strong></th></tr>';
+
+Month+='<tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr>';
+
+const firstDay=new Date(year,month,1).getDay();
+const daysInMonth=new Date(year,month+1,0).getDate();
+
+let dayCounter=1;
+
+for(let i=0;i<6;i++){                                                                                                                                                                                                                                                                                                                                                                                               
+let row='<tr>';
+
+for(let j=0;j<7;j++){
+if(i==0 && j<firstDay){
+row+='<td></td>';
+}
+else if(dayCounter<=daysInMonth){
+row+='<td>'+dayCounter+'</td>';
+dayCounter++;
+}else{
+row+='<td></td>';
+}
+}
+
+row+='</tr>';
+Month+=row;
+
+if(dayCounter>daysInMonth)break;
+}
+
+Month+='</table>';
+calendarDiv.innerHTML+=Month;
+}
+}
+</script>
+</body>
+</html>
