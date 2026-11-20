@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>CHANGE BG COLOR</title>
+<style>
+body{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+flex-direction:column;
+}
+button{
+ 
+}
+</style>
+</head>
+<body>
+<h2><b>CHANGE THE BACKGROUND COLOR</b></h2>
+<button onclick="changeColor()">CLICK HERE</button>
+<script>
+let colors=["white","blue","green","pink","yellow"];
+let i=0;
+function changeColor(){
+document.body.style.backgroundColor=colors[i];i++;
+if(i==5){
+i=0;
+}}
+</script>
+</body>
+</html>
