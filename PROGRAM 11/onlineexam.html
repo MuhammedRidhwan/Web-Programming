@@ -1,0 +1,128 @@
+<html>
+<head>
+    <title>Online Exam</title>
+</head><
+<style>
+
+</style>
+<body>
+<container>
+<h2>ONLINE EXAMINATION</h2>
+<p>STUDENT NAME:
+<input type="text" id="name" placeholder="Enter your name">
+</p>
+<button type="button" onclick="startExam()">
+    START EXAM
+    </button>
+<h3>TIME LEFT: <span id="timer">06:00</span></h3>
+<hr>
+<form id="exam" style="display:none;">
+<p>1. What is HTML?</p>
+    <input type="radio" name="q1" value="a"> Hyper Text Markup Language<br>
+    <input type="radio" name="q1" value="b"> High Text Machine Language<br>
+    <input type="radio" name="q1" value="c"> Home Tool Markup Language<br>
+<p>2. Which language is used for styling?</p>
+    <input type="radio" name="q2" value="a"> Java<br>
+    <input type="radio" name="q2" value="b"> CSS<br>
+    <input type="radio" name="q2" value="c"> Python<br>
+<p>3. Which language makes a webpage interactive?</p>
+    <input type="radio" name="q3" value="a"> HTML<br>
+    <input type="radio" name="q3" value="b"> CSS<br>
+    <input type="radio" name="q3" value="c"> JavaScript<br>
+<p>4. Which tag is used for a paragraph?</p>
+    <input type="radio" name="q4" value="a"> &lt;p&gt;<br>
+    <input type="radio" name="q4" value="b"> &lt;h1&gt;<br>
+    <input type="radio" name="q4" value="c"> &lt;br&gt;<br>
+<p>5. Which tag is used to create a link?</p>
+    <input type="radio" name="q5" value="a"> &lt;img&gt;<br>
+    <input type="radio" name="q5" value="b"> &lt;a&gt;<br>
+    <input type="radio" name="q5" value="c"> &lt;table&gt;<br>
+<p>6. Which tag is used to insert an image?</p>
+    <input type="radio" name="q6" value="a"> &lt;img&gt;<br>
+    <input type="radio" name="q6" value="b"> &lt;image&gt;<br>
+    <input type="radio" name="q6" value="c"> &lt;pic&gt;<br>
+<p>7. Which attribute is used to give a unique ID?</p>
+    <input type="radio" name="q7" value="a"> class<br>
+    <input type="radio" name="q7" value="b"> id<br>
+    <input type="radio" name="q7" value="c"> name<br>
+<p>8. Which tag is used to create a table row?</p>
+    <input type="radio" name="q8" value="a"> &lt;td&gt;<br>
+    <input type="radio" name="q8" value="b"> &lt;th&gt;<br>
+    <input type="radio" name="q8" value="c"> &lt;tr&gt;<br>
+<p>9. Which symbol is used for comments in JavaScript?</p>
+    <input type="radio" name="q9" value="a"> //<br>
+    <input type="radio" name="q9" value="b"> ##<br>
+    <input type="radio" name="q9" value="c"> **<br>
+<p>10. Which HTML tag creates a line break?</p>
+    <input type="radio" name="q10" value="a"> &lt;p&gt;<br>
+    <input type="radio" name="q10" value="b"> &lt;br&gt;<br>
+    <input type="radio" name="q10" value="c"> &lt;hr&gt;<br>
+<br>
+<button type="button" onclick="submitExam()">
+        Submit Exam
+    </button>
+</form>
+<h3 id="result"></h3>
+</container>
+<script>
+let time = 30;
+let examSubmitted = false;
+let countdown;
+function startExam() {
+let name = document.getElementById("name").value;
+if (name == "") {
+        alert("Please enter your name");
+        return;
+    }
+
+    document.getElementById("name").disabled = true;
+document.getElementById("exam").style.display = "block";
+countdown = setInterval(function() {
+let minutes = Math.floor(time / 60);
+let seconds = time % 60;
+document.getElementById("timer").innerHTML =
+            minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+time--;
+if (time < 0) {
+            clearInterval(countdown);
+            submitExam();
+            }
+}, 1000);
+}
+function submitExam() {
+if (examSubmitted) return;
+let name = document.getElementById("name").value;
+examSubmitted = true;
+clearInterval(countdown);
+let score = 0;
+let answers = {
+        q1: "a",
+        q2: "b",
+        q3: "c",
+        q4: "a",
+        q5: "b",
+        q6: "a",
+        q7: "b",
+        q8: "c",
+        q9: "a",
+        q10: "b"
+    };
+for (let question in answers) {
+let selected = document.querySelector(
+            'input[name="' + question + '"]:checked'
+        );
+if (selected && selected.value == answers[question]) {
+            score++;
+        }
+    }
+document.getElementById("result").innerHTML =
+        "Student Name: " + name +
+        "<br>Total Marks: 10" +
+        "<br>Your Score: " + score +
+        "<br>Percentage: " + (score / 10 * 100) + "%";
+document.getElementById("exam").style.display = "none";
+document.getElementById("timer").innerHTML = "Time Over";
+}
+</script>
+</body>
+</html>
