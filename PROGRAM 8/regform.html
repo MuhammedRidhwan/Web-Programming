@@ -1,0 +1,107 @@
+<html>
+<head>
+<title>REGISTRATION FORM</title>
+<style>
+body {
+    font-family: Arial;
+    background-color: beige;
+}
+.container {
+    width: 350px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    font-weight: bold;
+}
+h2 {
+    color: maroon;
+    text-align: center;
+    font-weight: 900;
+
+}
+input {
+    width: 95%;
+    padding: 8px;
+    margin: 8px 0;
+}
+button {
+    width: 100%;
+    padding: 10px;
+    background: maroon;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+button:hover {
+    background: black;
+}
+span {
+    color: red;
+    font-size: 12px;
+    display: block;
+    margin-bottom: 5px;
+}
+</style>
+</head>
+<body>
+<script>
+function validateForm() {
+let name = document.getElementById("name").value;
+let email = document.getElementById("email").value;
+let password = document.getElementById("password").value;
+let confirm = document.getElementById("confirm").value;
+let mobile = document.getElementById("mobile").value;
+// Clear previous error messages
+document.querySelectorAll("span").forEach(function(s) {
+s.innerHTML = "";});
+if (name.trim() == "") {
+document.getElementById("nameError").innerHTML="Please enter your name";
+return false;
+}
+let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if (!emailPattern.test(email)) {
+document.getElementById("emailError").innerHTML ="Enter a valid email address";
+return false;
+}
+if (password.length < 6) {
+document.getElementById("passwordError").innerHTML ="Password must contain at least 6 characters";
+return false;
+}
+if (password !=confirm) {
+document.getElementById("confirmError").innerHTML="Passwords do not match";
+return false;
+}
+let mobilePattern = /^[0-9]{10}$/;
+if (!mobilePattern.test(mobile)) {
+document.getElementById("mobileError").innerHTML="Enter a valid 10-digit mobile number";
+return false;
+}
+alert("Registration Successful!");
+return true;
+}
+</script>
+<div class="container">
+<h2>REGISTRATION FORM</h2>
+<form onsubmit="return validateForm()">
+<label>NAME:</label>
+<input type="text" id="name" placeholder="Enter your name">
+<span id="nameError"></span>
+<label>EMAIL:</label>
+<input type="text" id="email" placeholder="Enter your email">
+<span id="emailError"></span>
+<label>PASSWORD:</label>
+<input type="password" id="password" placeholder="Enter password">
+<span id="passwordError"></span>
+<label>CONFIRM PASSWORD:</label>
+<input type="password" id="confirm" placeholder="Confirm password">
+<span id="confirmError"></span>
+<label>MOBILE NUMBER:</label>
+<input type="text" id="mobile" placeholder="Enter mobile number">
+<span id="mobileError"></span>
+<button type="submit">REGISTER</button>
+</form>
+</div>
+</body>
+</html>
